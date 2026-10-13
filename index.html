@@ -288,7 +288,7 @@ footer.wrap { display: block; padding-block: 48px 36px; }
       <div class="eyebrow" data-zh="<b>01</b> 关于我们"><b>01</b> Who we are</div>
       <div class="about" style="margin-top:28px">
         <div data-r>
-          <h2 style="margin-top:0" data-zh="约 200 辆车的展厅，背后是让一切运转的团队。">A showroom of about 200 cars, run by people who keep it moving.</h2>
+          <h2 style="margin-top:0" data-zh="约 400 辆车的展厅，背后是让一切运转的团队。">A showroom of about 400 cars, run by people who keep it moving.</h2>
           <p style="margin-top:20px" data-zh="CariCarz AutoMall 是位于 Kota Damansara 的二手车展厅。每一笔成交的背后，是一支检查每辆车、办理 Puspakom 和 JPJ 手续、确保库存准确并回复每个线索的团队。">CariCarz AutoMall is a used-car showroom in Kota Damansara. Behind every sale is a team that inspects each car, handles Puspakom and JPJ, keeps the inventory accurate and answers every lead.</p>
         </div>
         <div class="quote" data-r>
@@ -391,20 +391,20 @@ var ROLES = [
     does: ["Drive cars to Puspakom for inspection", "JPJ road tax, transfers and documents", "Deliver vehicles to customers", "Showroom support: fuel and clean cars"],
     needs: ["Class D and B2 licence", "Knows Klang Valley roads and Puspakom/JPJ", "Reports status via WhatsApp", "Basic BM and English"] },
   { id: "inventory-admin", team: "Admin", title: "Inventory Admin", openings: 1, type: "Full-time",
-    tagline: "Keeper of our ~200-car showroom inventory.", img: "img/inventory.jpg",
-    title_zh: "库存行政", type_zh: "全职", tagline_zh: "我们约 200 辆车展厅库存的守护者。",
+    tagline: "Keeper of our ~400-car showroom inventory.", img: "img/inventory.jpg",
+    title_zh: "库存行政", type_zh: "全职", tagline_zh: "我们约 400 辆车展厅库存的守护者。",
     does_zh: ["钥匙与文件管理，每日盘点", "在各平台发布车辆广告", "数据录入", "修图"],
     needs_zh: ["SPM / STPM / 商业或相关领域文凭", "基本 Excel 或 Google Sheets 技能（XLOOKUP）", "细心、有条理", "欢迎应届毕业生"],
     does: ["Key and document control, daily audits", "Publish ad listings across platforms", "Data entry", "Edit photos"],
     needs: ["SPM / STPM / Diploma in Business or a related field", "Basic Excel or Google Sheets (XLOOKUP)", "Detail-oriented and organized", "Fresh graduates welcome"] }
 ];
 var LOCATION = "Kota Damansara, Selangor";
-var CARS = 200;
+var CARS = 400;
 var WORDS = ["test drive", "listing", "inspection", "delivery"];
 var WORDS_ZH = ["试驾", "上架", "验车", "交车"];
 var PERKS = [
   { c: "var(--orange)", h: "Training provided", p: "Experience helps, but it is not everything. We train you on the cars and the process.", h_zh: "提供培训", p_zh: "经验是加分项，但不是唯一条件。我们会培训你认识车辆和工作流程。" },
-  { c: "var(--purple)", h: "A busy, real showroom", p: "About 200 cars, real customers and real deals. You see the result of your work every day.", h_zh: "真实忙碌的展厅", p_zh: "约 200 辆车，真实的客户和真实的成交。你每天都能看到自己的工作成果。" },
+  { c: "var(--purple)", h: "A busy, real showroom", p: "About 400 cars, real customers and real deals. You see the result of your work every day.", h_zh: "真实忙碌的展厅", p_zh: "约 400 辆车，真实的客户和真实的成交。你每天都能看到自己的工作成果。" },
   { c: "var(--teal)", h: "Fresh faces welcome", p: "Where the role allows, we welcome fresh graduates and people new to the industry.", h_zh: "欢迎新人", p_zh: "在岗位允许的情况下，我们欢迎应届毕业生和刚入行的朋友。" },
   { c: "var(--magenta)", h: "Easy to reach", p: "Our showroom is at Strand Mall, Kota Damansara, with parking on site.", h_zh: "交通方便", p_zh: "展厅位于 Kota Damansara 的 Strand Mall，设有停车位。" }
 ];
@@ -413,6 +413,8 @@ var APPLY_ENDPOINT = "https://script.google.com/a/macros/caricarz.com/s/AKfycbwH
 var ROLES_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFiXmXee4EF4vdwEc0VNTM3ZRGZEg_ijIuLrIVLVxk17Ff_J7KjsRAq4lF1SaetDs_Kl_QOEhhLTCb/pub?gid=1447355063&single=true&output=csv";    // Google Sheet "Roles" tab, File > Share > Publish to web > CSV
 var DEFAULT_IMG = "img/team.jpg";
 /* Meta Pixel hooks: safe no-ops until the pixel is installed on the live site. */
+/* Events are named separately from caricarz.com (same pixel) so hiring data stays clean. */
+function trackCustom(ev, data) { try { if (window.fbq) window.fbq("trackCustom", ev, data || {}); } catch (e) {} }
 function track(ev, data, id) { try { if (window.fbq) window.fbq("track", ev, data || {}, id ? { eventID: id } : undefined); } catch (e) {} }
 
 var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -506,7 +508,7 @@ document.addEventListener("submit", function (e) {
   if (!APPLY_ENDPOINT) { show(t("prev")); return; }
   btn.disabled = true;
   fetch(APPLY_ENDPOINT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(data) })
-    .then(function () { track("Lead", { content_name: data.role }, data.event_id); f.reset(); show(t("thanks").replace("{n}", data.name)); })
+    .then(function () { track("SubmitApplication", { content_name: data.role }, data.event_id); f.reset(); show(t("thanks").replace("{n}", data.name)); })
     .catch(function () { show(t("fail"), true); })
     .then(function () { btn.disabled = false; });
 });
@@ -634,7 +636,7 @@ function showRole(id, push) {
   if (view === "landing") landingY = window.scrollY;
   swap(function () {
     $("#landing").hidden = true; var d = $("#detail"); d.hidden = false; d.innerHTML = detailHTML(r);
-    view = "detail"; window.scrollTo(0, 0); reveal(d); watchApply(); track("ViewContent", { content_name: r.title });
+    view = "detail"; window.scrollTo(0, 0); reveal(d); watchApply(); trackCustom("ViewJob", { content_name: r.title });
   });
   if (push) { try { location.hash = "role-" + id; } catch (e) {} }
 }

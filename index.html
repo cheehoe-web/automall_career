@@ -112,7 +112,8 @@ button { font-family: inherit; }
 .tab b { font-weight: 500; margin-left: 6px; opacity: 0.7; }
 .tab:hover { color: var(--ink); }
 .tab[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--teal); }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 340px)); justify-content: start; gap: 24px; }
+@media (max-width: 680px) { .grid { grid-template-columns: 1fr; } }
 .role { --c: var(--orange); display: flex; flex-direction: column; background: var(--card); border-radius: 12px; border-bottom: 4px solid var(--c); box-shadow: var(--shadow); overflow: hidden; text-decoration: none; min-width: 0; transition: transform 0.2s ease, box-shadow 0.2s ease; }
 .role:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(47, 55, 80, 0.14); }
 .role[data-id="fleet-inspector"], .detail[data-id="fleet-inspector"] { --c: var(--purple); }
@@ -247,7 +248,7 @@ footer.wrap { display: block; padding-block: 48px 36px; }
 @media (max-width: 720px) { .bar .lang { margin-left: auto; } .bar .lang + .btn { margin-left: 8px; } .bar .btn { margin-left: 0; } }
 .lang button, .bar .btn { white-space: nowrap; }
 @media (max-width: 420px) { .bar .btn { padding: 9px 12px; font-size: 15px; } .lang button { padding: 6px 5px; } }
-.stats { grid-template-columns: repeat(2, 1fr); } @media (max-width: 720px) { .stat:nth-child(n+3) { border-top: 0; } .stat:nth-child(2) { border-left: 1px solid rgba(255,255,255,0.28); } }
+.stats { grid-template-columns: 1fr; text-align: center; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .facts { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 720px) { .facts { grid-template-columns: 1fr; } .fact, .fact:nth-child(3) { border-left: 0; } .fact:nth-child(n+2) { border-top: 1px solid rgba(255,255,255,0.28); } }
@@ -376,27 +377,27 @@ var ROLES = [
     does_zh: ["跟进我们平台、Facebook 和 WhatsApp 的线索并转化成交", "议价并成交", "介绍车辆并带客试驾", "电话销售与跟进"],
     needs_zh: ["持有 D 类驾照", "有销售经验者优先，公司提供培训", "精通马来语和英语（会华语者更佳）", "精力充沛，需周末上班（轮休）"],
     does: ["Convert leads from our platform, Facebook and WhatsApp", "Negotiate price and close deals", "Present vehicles and run test drives", "Tele sales and follow-up"],
-    needs: ["Class D licence", "Sales experience preferred, training provided", "BM and English (Mandarin a big plus)", "High energy, works weekends (rotational off-days)"] },
+    needs: ["Class D licence", "Sales experience preferred, training provided", "Bahasa Malaysia and English (Mandarin a big plus)", "High energy, able to work weekends (rotating off-days)"] },
   { id: "fleet-inspector", team: "Fleet", title: "Fleet Inspector", openings: 1, type: "Full-time",
     tagline: "Keeping our fleet inspected, organized and showroom-ready.", img: "img/inspector.jpg",
     title_zh: "车队检查员", type_zh: "全职", tagline_zh: "让我们的车辆保持检验合格、井然有序、随时可展示。",
     does_zh: ["协调车辆调动与物流", "检查新到车辆是否有瑕疵", "办理 Puspakom 和 JPJ 过户", "车辆日常保养"],
     needs_zh: ["持有 D 类驾照（有 GDL 驾照更佳）", "1 至 2 年车队、物流或租车运营经验", "做事有条理，能同时处理多项任务", "具备基本汽车机械知识，熟悉 JPJ/Puspakom 流程"],
-    does: ["Coordinate vehicle transfers and logistics", "Inspect incoming cars for defects", "Manage Puspakom and JPJ transfers", "Vehicle daily up-keep"],
-    needs: ["Class D licence (GDL licence a big plus)", "1 to 2 years in fleet, logistics or car rental operations", "Organized and able to multitask", "Basic car mechanics and JPJ/Puspakom know-how"] },
+    does: ["Coordinate vehicle transfers and logistics", "Inspect incoming cars for defects", "Manage Puspakom and JPJ transfers", "Daily vehicle upkeep"],
+    needs: ["Class D licence (GDL licence a big plus)", "1 to 2 years of experience in fleet, logistics or car rental operations", "Organized and able to multitask", "Basic car mechanics and JPJ/Puspakom know-how"] },
   { id: "fleet-runner", team: "Fleet", title: "Fleet Runner", openings: 1, type: "Full-time",
     tagline: "The bridge between our showroom, JPJ/Puspakom and customers.", img: "img/runner.jpg",
     title_zh: "车队外勤员", type_zh: "全职", tagline_zh: "连接我们展厅、JPJ/Puspakom 与客户的桥梁。",
     does_zh: ["驾车前往 Puspakom 验车", "办理 JPJ 路税、过户及文件", "将车辆送交客户", "展厅支援：加油与洗车"],
     needs_zh: ["持有 D 类及 B2 驾照", "熟悉巴生谷道路及 Puspakom/JPJ", "通过 WhatsApp 汇报进度", "基本的马来语和英语"],
     does: ["Drive cars to Puspakom for inspection", "JPJ road tax, transfers and documents", "Deliver vehicles to customers", "Showroom support: fuel and clean cars"],
-    needs: ["Class D and B2 licence", "Knows Klang Valley roads and Puspakom/JPJ", "Reports status via WhatsApp", "Basic BM and English"] },
+    needs: ["Class D and B2 licence", "Familiar with Klang Valley roads and Puspakom/JPJ", "Reports progress via WhatsApp", "Basic Bahasa Malaysia and English"] },
   { id: "inventory-admin", team: "Admin", title: "Inventory Admin", openings: 1, type: "Full-time",
     tagline: "Keeper of our ~400-car showroom inventory.", img: "img/inventory.jpg",
     title_zh: "库存行政", type_zh: "全职", tagline_zh: "我们约 400 辆车展厅库存的守护者。",
-    does_zh: ["钥匙与文件管理，每日盘点", "在各平台发布车辆广告", "数据录入", "修图"],
-    needs_zh: ["SPM / STPM / 商业或相关领域文凭", "基本 Excel 或 Google Sheets 技能（XLOOKUP）", "细心、有条理", "欢迎应届毕业生"],
-    does: ["Key and document control, daily audits", "Publish ad listings across platforms", "Data entry", "Edit photos"],
+    does_zh: ["钥匙与文件管理，每日盘点", "在各平台发布车辆广告", "数据录入", "修图（车辆照片）"],
+    needs_zh: ["SPM、STPM 或商业相关文凭", "基本 Excel 或 Google Sheets 技能（XLOOKUP）", "细心、有条理", "欢迎应届毕业生"],
+    does: ["Key and document control, daily audits", "Publish ad listings across platforms", "Data entry", "Edit vehicle photos"],
     needs: ["SPM / STPM / Diploma in Business or a related field", "Basic Excel or Google Sheets (XLOOKUP)", "Detail-oriented and organized", "Fresh graduates welcome"] }
 ];
 var LOCATION = "Kota Damansara, Selangor";
@@ -447,7 +448,7 @@ var t = function (k) { return TR[k][lang === "zh" ? 1 : 0]; };
 
 /* ---------- stats ---------- */
 function renderStats() {
-  $("#stats").innerHTML = [[CARS, "~", t("cars")], [1, "", t("loc")]]
+  $("#stats").innerHTML = [[CARS, "~", t("cars")]]
     .map(function (s) { return '<div class="stat"><b data-to="' + s[0] + '" data-pre="' + s[1] + '">' + s[1] + s[0] + '</b><span>' + esc(s[2]) + '</span></div>'; }).join("");
 }
 

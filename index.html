@@ -1,0 +1,674 @@
+<title>CariCarz Careers</title>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','791124685077631');
+fbq('track','PageView');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap">
+<style>
+/* Layout: caricarz.com look (light lavender page, white rounded cards with a coloured bottom edge, teal and purple buttons) on the itsherbs structure (numbered sections, role grid, separate role view). */
+:root {
+  --bg: #ffffff;
+  --soft: #f4f6fb;
+  --card: #ffffff;
+  --ink: #2f3750;
+  --muted: #6b7289;
+  --line: #dde1ee;
+  --teal: #12889a;
+  --purple: #6b5fc0;
+  --orange: #e8680c;
+  --magenta: #d8207c;
+  --on-accent: #ffffff;
+  --shadow: 0 4px 20px rgba(47, 55, 80, 0.09), 0 0 0 1px var(--line);
+  --font-display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.65; padding-inline: 20px; }
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -0.02em; font-weight: 700; }
+p { margin: 0; }
+a { color: inherit; }
+button { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+.wrap { max-width: 1100px; margin-inline: auto; }
+.eyebrow { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.eyebrow b { color: var(--magenta); font-family: var(--font-display); letter-spacing: 0.1em; }
+.rule { border: 0; border-top: 2px solid var(--ink); margin: 0 0 28px; }
+
+/* motion */
+[data-r] { transition: opacity 0.7s ease, transform 0.7s ease; }
+[data-r].pre { opacity: 0; transform: translateY(16px); }
+#stage { transition: opacity 0.25s ease, transform 0.25s ease; }
+#stage.out { opacity: 0; transform: translateY(8px); }
+.word { display: inline-block; transition: opacity 0.35s ease, transform 0.35s ease; }
+.word.out { opacity: 0; transform: translateY(6px); }
+@media (prefers-reduced-motion: reduce) {
+  [data-r], #stage, .word { transition: none; }
+  [data-r].pre { transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); box-shadow: 0 1px 0 var(--line), 0 4px 16px rgba(47, 55, 80, 0.05); margin-inline: -20px; padding-inline: 20px; }
+.bar .wrap { display: flex; align-items: center; gap: 28px; padding-block: 12px; }
+.logo { display: block; line-height: 0; background: #fff; padding: 4px 8px; border-radius: 6px; cursor: pointer; }
+.logo img { height: 28px; width: auto; display: block; }
+.careers-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); padding-left: 14px; border-left: 1px solid var(--line); }
+.bar nav { display: flex; gap: 28px; margin-left: auto; font-weight: 500; font-size: 14px; }
+.bar nav a { text-decoration: none; color: var(--muted); cursor: pointer; }
+.bar nav a:hover { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: 14px; text-decoration: none; border: 0; cursor: pointer; padding: 12px 24px; border-radius: 8px; background: var(--teal); color: var(--on-accent); }
+.btn:hover { filter: brightness(1.08); }
+.btn.alt { background: var(--purple); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1px var(--ink); filter: none; }
+@media (max-width: 720px) { .bar nav, .careers-tag { display: none; } .bar .btn { padding: 10px 16px; } }
+
+/* hero */
+.hero { padding-block: 72px 40px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+.hero h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; margin-block: 18px 20px; }
+.hero h1 em { font-style: normal; color: var(--teal); }
+.hero p.lead { font-size: 18px; color: var(--muted); max-width: 48ch; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.hero .img { border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.hero .img img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3.4; object-fit: cover; }
+@media (max-width: 860px) { .hero { grid-template-columns: 1fr; gap: 32px; padding-block: 40px 24px; } }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--card); border-radius: 14px; box-shadow: var(--shadow); margin-bottom: 96px; }
+.stat { padding: 24px 28px; border-left: 1px solid var(--line); min-width: 0; }
+.stat:first-child { border-left: 0; }
+.stat b { font-family: var(--font-display); font-size: clamp(30px, 4vw, 44px); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; display: block; }
+.stat span { font-size: 13px; color: var(--muted); font-weight: 500; }
+@media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } .stat:nth-child(3) { border-left: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--line); } }
+
+/* sections */
+.sec { margin-bottom: 104px; }
+.sec h2 { font-size: clamp(28px, 4vw, 44px); margin-block: 16px 0; }
+.sec h2 span { font-weight: 500; color: var(--muted); }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.about p { color: var(--muted); font-size: 17px; }
+.about p + p { margin-top: 14px; }
+.quote { background: var(--card); border-radius: 14px; box-shadow: var(--shadow); padding: 32px; border-bottom: 4px solid var(--teal); }
+.quote p { color: var(--ink); font-family: var(--font-display); font-weight: 600; font-size: clamp(20px, 2.6vw, 26px); line-height: 1.35; }
+.quote p + p { margin-top: 16px; }
+.quote em { font-style: normal; color: var(--teal); }
+@media (max-width: 820px) { .about { grid-template-columns: 1fr; gap: 28px; } }
+.everyone { padding-block: 8px; }
+.everyone p { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 5vw, 56px); line-height: 1.15; letter-spacing: -0.02em; }
+.everyone .word { color: var(--purple); }
+.everyone .sub { font-family: var(--font-body); font-weight: 400; font-size: 17px; color: var(--muted); margin-top: 16px; }
+
+/* roles */
+.tabs { display: flex; flex-wrap: wrap; gap: 4px 28px; border-bottom: 1px solid var(--line); margin: 28px 0 32px; }
+.tab { font: inherit; font-weight: 700; font-size: 14px; color: var(--muted); background: none; border: 0; border-bottom: 3px solid transparent; padding: 10px 0 12px; cursor: pointer; margin-bottom: -1px; }
+.tab b { font-weight: 500; margin-left: 6px; opacity: 0.7; }
+.tab:hover { color: var(--ink); }
+.tab[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--teal); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; }
+.role { --c: var(--orange); display: flex; flex-direction: column; background: var(--card); border-radius: 12px; border-bottom: 4px solid var(--c); box-shadow: var(--shadow); overflow: hidden; text-decoration: none; min-width: 0; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.role:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(47, 55, 80, 0.14); }
+.role[data-id="fleet-inspector"], .detail[data-id="fleet-inspector"] { --c: var(--purple); }
+.role[data-id="fleet-runner"], .detail[data-id="fleet-runner"] { --c: var(--teal); }
+.role[data-id="inventory-admin"], .detail[data-id="inventory-admin"] { --c: var(--magenta); }
+.role .ph { aspect-ratio: 16 / 10; overflow: hidden; background: var(--line); position: relative; }
+.role .ph img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.role:hover .ph img { transform: scale(1.04); }
+.role .ph i { position: absolute; top: 12px; left: 12px; background: var(--card); color: var(--ink); font-style: normal; font-family: var(--font-display); font-weight: 700; font-size: 12px; padding: 4px 10px; border-radius: 999px; }
+.role .body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.role .cat { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--c); }
+.role h3 { font-size: 21px; }
+.role .tag { font-size: 14px; color: var(--muted); }
+.role .foot { margin-top: auto; padding-top: 16px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); font-size: 14px; font-weight: 700; }
+.role .foot span { color: var(--muted); font-weight: 500; }
+.role .foot em { font-style: normal; color: var(--c); }
+.empty { grid-column: 1 / -1; color: var(--muted); }
+
+/* perks */
+.perk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 24px; margin-top: 32px; }
+.perk { background: var(--card); border-radius: 12px; border-bottom: 4px solid var(--c); box-shadow: var(--shadow); padding: 24px; min-width: 0; }
+.perk h3 { font-size: 18px; margin-bottom: 8px; }
+.perk p { color: var(--muted); font-size: 15px; }
+
+/* apply */
+.apply-sec { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; }
+.sub { color: var(--muted); margin-block: 14px 24px; max-width: 52ch; }
+form { display: grid; gap: 18px; background: var(--card); border-radius: 14px; box-shadow: var(--shadow); padding: 28px; min-width: 0; }
+.f { display: grid; gap: 6px; min-width: 0; }
+.f label, .f legend { font-weight: 700; font-size: 13px; padding: 0; }
+.f input, .f select { font: inherit; color: var(--ink); background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; width: 100%; min-width: 0; }
+.f input:focus, .f select:focus { border-color: var(--teal); }
+.f small, .note { color: var(--muted); font-size: 13px; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.radios { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.radios label { font-weight: 500; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; cursor: pointer; background: var(--soft); }
+.radios input { accent-color: var(--teal); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 520px) { .two { grid-template-columns: 1fr; } form { padding: 20px; } }
+form .btn { justify-self: start; padding: 14px 32px; }
+.status { padding: 14px 16px; font-weight: 500; background: var(--soft); border-radius: 8px; border-left: 4px solid var(--teal); }
+.status.err { border-left-color: var(--magenta); }
+.contact { background: var(--card); border-radius: 14px; box-shadow: var(--shadow); border-bottom: 4px solid var(--purple); padding: 28px; display: grid; gap: 24px; min-width: 0; }
+.contact h3 { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.contact dl { margin: 0; display: grid; gap: 18px; }
+.contact dt { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.contact dd { margin: 2px 0 0; font-family: var(--font-display); font-weight: 600; font-size: 18px; overflow-wrap: anywhere; line-height: 1.4; }
+.contact dd a { text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: var(--teal); }
+.contact img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-radius: 10px; }
+@media (max-width: 860px) { .apply-sec { grid-template-columns: 1fr; gap: 36px; } }
+
+/* detail */
+.detail { --c: var(--orange); padding-block: 40px 24px; }
+.back { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 0; }
+.back:hover { color: var(--ink); }
+.d-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; margin-block: 28px; }
+.d-head h1 { font-size: clamp(34px, 6vw, 60px); font-weight: 800; }
+.d-head p { color: var(--muted); font-size: 18px; margin-top: 10px; max-width: 52ch; }
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--card); border-radius: 12px; border-bottom: 4px solid var(--c); box-shadow: var(--shadow); margin-bottom: 40px; }
+.fact { padding: 18px 22px; border-left: 1px solid var(--line); min-width: 0; }
+.fact:first-child { border-left: 0; }
+.fact span { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.fact b { font-family: var(--font-display); font-size: 17px; font-weight: 600; }
+@media (max-width: 720px) { .facts { grid-template-columns: repeat(2, 1fr); } .fact:nth-child(3) { border-left: 0; } .fact:nth-child(n+3) { border-top: 1px solid var(--line); } }
+.d-cols { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; margin-bottom: 72px; }
+.d-photo { border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); position: sticky; top: calc(env(safe-area-inset-top, 0px) + 88px); }
+.d-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 4.2; object-fit: cover; }
+@media (max-width: 820px) { .d-cols { grid-template-columns: 1fr; gap: 32px; } .d-photo { position: static; order: -1; } .d-photo img { aspect-ratio: 16 / 10; } }
+.block + .block { margin-top: 40px; }
+.block h2 { font-size: 24px; display: flex; align-items: baseline; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.block h2 b { font-size: 12px; color: var(--magenta); letter-spacing: 0.1em; }
+.block ul { list-style: none; margin: 0; padding: 0; }
+.block li { display: flex; gap: 14px; padding-block: 12px; border-bottom: 1px solid var(--line); font-size: 16px; }
+.block li::before { content: "\2014"; color: var(--c); font-weight: 700; flex: none; }
+.more { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; border-top: 2px solid var(--ink); padding-top: 24px; margin-top: 72px; }
+.more a { cursor: pointer; font-family: var(--font-display); font-weight: 600; text-decoration: none; }
+.more a:hover { color: var(--teal); }
+
+footer { padding-block: 32px 40px; display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+footer b { color: var(--ink); font-family: var(--font-display); }
+
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.consent input { margin-top: 3px; width: 18px; height: 18px; flex: none; accent-color: var(--teal); }
+.sticky-apply { display: none; }
+@media (max-width: 720px) {
+  .tabs { flex-wrap: nowrap; overflow-x: auto; gap: 24px; margin-inline: -20px; padding-inline: 20px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { white-space: nowrap; flex: none; }
+  .d-head .btn { width: 100%; }
+  form .btn { justify-self: stretch; width: 100%; }
+  .sticky-apply { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--bg); box-shadow: 0 -1px 0 var(--line), 0 -6px 20px rgba(47,55,80,0.08); transition: transform .3s ease; }
+  .sticky-apply .btn { width: 100%; padding: 15px 16px; }
+  .sticky-apply.hide { transform: translateY(110%); }
+  .detail { padding-bottom: 80px; }
+}
+
+/* contrast pass: solid colour cards */
+.role { background: var(--c); border-bottom: 0; color: #fff; }
+.role .cat, .role .foot em, .role .foot span, .role .tag { color: rgba(255,255,255,0.88); }
+.role h3, .role .foot { color: #fff; }
+.role .foot { border-top-color: rgba(255,255,255,0.3); }
+.role .ph i { background: #fff; color: var(--ink); }
+.perk { background: var(--c); border-bottom: 0; color: #fff; }
+.perk h3 { color: #fff; }
+.perk p { color: rgba(255,255,255,0.92); }
+.stats { background: var(--teal); box-shadow: none; }
+.stat { border-left-color: rgba(255,255,255,0.28); color: #fff; }
+.stat span { color: rgba(255,255,255,0.9); }
+.quote { background: var(--purple); border-bottom: 0; box-shadow: none; }
+.quote p, .quote em { color: #fff; }
+.facts { background: var(--c); border-bottom: 0; box-shadow: none; color: #fff; }
+.fact { border-left-color: rgba(255,255,255,0.28); }
+.fact span { color: rgba(255,255,255,0.85); }
+.fact b { color: #fff; }
+.d-head .btn { background: var(--c); }
+
+.lang { display: flex; gap: 2px; font-family: var(--font-display); font-size: 13px; font-weight: 600; }
+.lang button { background: none; border: 0; border-bottom: 2px solid transparent; padding: 6px 8px; color: var(--muted); cursor: pointer; font: inherit; }
+.lang button.on { color: var(--ink); border-bottom-color: var(--ink); }
+.bar .lang { margin-left: auto; }
+.bar .lang + .btn { margin-left: 12px; }
+footer.wrap { display: block; padding-block: 48px 36px; }
+.f-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px 40px; }
+.f-brand b { font-size: 20px; color: var(--ink); }
+.f-brand p { margin: 6px 0 14px; letter-spacing: 0.08em; }
+.f-brand address { font-style: normal; line-height: 1.6; max-width: 36ch; }
+.f-links { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: flex-start; }
+.f-links a { color: var(--ink); font-family: var(--font-display); font-weight: 600; font-size: 14px; text-decoration: none; padding-bottom: 6px; border-bottom: 2px solid var(--line); overflow-wrap: anywhere; }
+.f-links a:hover { border-bottom-color: var(--teal); }
+.f-bot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line); }
+@media (max-width: 720px) { .bar .lang { margin-left: auto; } .bar .lang + .btn { margin-left: 8px; } .bar .btn { margin-left: 0; } }
+.lang button, .bar .btn { white-space: nowrap; }
+@media (max-width: 420px) { .bar .btn { padding: 9px 12px; font-size: 13px; } .lang button { padding: 6px 5px; } }
+.stats { grid-template-columns: repeat(2, 1fr); } @media (max-width: 720px) { .stat:nth-child(n+3) { border-top: 0; } .stat:nth-child(2) { border-left: 1px solid rgba(255,255,255,0.28); } }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.facts { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 720px) { .facts { grid-template-columns: 1fr; } .fact, .fact:nth-child(3) { border-left: 0; } .fact:nth-child(n+2) { border-top: 1px solid rgba(255,255,255,0.28); } }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" data-nav="top" aria-label="CariCarz AutoMall home"><img src="img/logo.png" alt="CariCarz AutoMall"></a>
+    <span class="careers-tag" data-zh="招聘">Careers</span>
+    <nav aria-label="Sections">
+      <a data-nav="roles" data-zh="开放职位">Open roles</a>
+      <a data-nav="why" data-zh="为什么加入">Why join</a>
+      <a data-nav="apply" data-zh="如何申请">How to apply</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="zh">中文</button><button type="button" data-lang="en">EN</button></div>
+    <a class="btn hbtn" data-nav="apply" data-zh="立即申请">Apply now</a>
+  </div>
+</header>
+
+<div id="stage">
+  <main class="wrap" id="landing">
+    <section class="hero" id="top">
+      <div data-r>
+        <div class="eyebrow" data-zh="#&nbsp; 加入我们">#&nbsp; Join the team</div>
+        <h1 data-zh="和我们一起，<em>驱动 CariCarz</em> 向前。"><em>Come drive</em> CariCarz forward.</h1>
+        <p class="lead" data-zh="CariCarz AutoMall 位于 Kota Damansara，是一间繁忙的二手车展厅。看看现在开放的职位，找到适合你的位置。">CariCarz AutoMall is a busy used-car showroom in Kota Damansara. See what is open right now and find the seat that fits you.</p>
+        <div class="cta">
+          <a class="btn" data-nav="roles" data-zh="查看开放职位">See open roles</a>
+          <a class="btn ghost" data-nav="apply" data-zh="投递简历">Send your resume</a>
+        </div>
+      </div>
+      <div class="img" data-r><img src="img/team.jpg" alt="The CariCarz AutoMall team in the showroom giving thumbs up"></div>
+    </section>
+
+    <div class="stats" id="stats" data-r></div>
+
+    <section class="sec">
+      <hr class="rule">
+      <div class="eyebrow" data-zh="<b>01</b> 关于我们"><b>01</b> Who we are</div>
+      <div class="about" style="margin-top:28px">
+        <div data-r>
+          <h2 style="margin-top:0" data-zh="约 200 辆车的展厅，背后是让一切运转的团队。">A showroom of about 200 cars, run by people who keep it moving.</h2>
+          <p style="margin-top:20px" data-zh="CariCarz AutoMall 是位于 Kota Damansara 的二手车展厅。每一笔成交的背后，是一支检查每辆车、办理 Puspakom 和 JPJ 手续、确保库存准确并回复每个线索的团队。">CariCarz AutoMall is a used-car showroom in Kota Damansara. Behind every sale is a team that inspects each car, handles Puspakom and JPJ, keeps the inventory accurate and answers every lead.</p>
+        </div>
+        <div class="quote" data-r>
+          <p data-zh="每辆车都有一个故事。">Every car has a story.</p>
+          <p data-zh="这里的每个岗位，都是<em>故事的一部分</em>。">Every role here is <em>part of it</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec everyone" data-r>
+      <hr class="rule">
+      <div class="eyebrow" data-zh="<b>02</b> 在 CariCarz 的日子"><b>02</b> Life at CariCarz</div>
+      <p style="margin-top:20px" data-zh="每一次<span class=&quot;word&quot; id=&quot;word&quot;>试驾</span>的背后，<br>都有一个用心的人。">Behind every <span class="word" id="word">test drive</span>,<br>there is someone who cares.</p>
+      <p class="sub" data-zh="来做那个人吧。">Come and be that person.</p>
+    </section>
+
+    <section class="sec" id="roles">
+      <hr class="rule">
+      <div class="eyebrow" data-zh="<b>03</b> 开放职位"><b>03</b> Open roles</div>
+      <h2 data-zh="哪个位置适合你？<span>也许就是你的。</span>">Which seat is for you? <span>It could be yours.</span></h2>
+      <p class="sub" style="margin-bottom:0" data-zh="点进任何职位查看完整说明。">Open any role for the full description.</p>
+      <div class="tabs" id="tabs" role="group" aria-label="Filter roles by team"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section class="sec" id="why">
+      <hr class="rule">
+      <div class="eyebrow" data-zh="<b>04</b> 为什么加入"><b>04</b> Why join</div>
+      <h2 data-zh="这里的工作是什么样的">What the work looks like here</h2>
+      <div class="perk-grid" id="perks"></div>
+    </section>
+
+    <section class="sec" id="apply">
+      <hr class="rule">
+      <div class="eyebrow" data-zh="<b>05</b> 如何申请"><b>05</b> How to apply</div>
+      <div class="apply-sec" style="margin-top:20px">
+        <div>
+          <h2 style="margin-top:0" data-zh="你准备好了，<span>我们就绪。</span>">Ready when <span>you are.</span></h2>
+          <p class="sub" data-zh="把简历发给我们。选择一个职位，或选「任何职位都可以」，由我们为你匹配。">Send us your resume. Pick a role, or choose "Open to any role" and we will match you.</p>
+          <div id="form-landing"></div>
+        </div>
+        <aside class="contact" data-r>
+          <h3 data-zh="其他联系方式">Other ways to reach us</h3>
+          <dl>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/60162313191">+60 16-231 3191</a></dd></div>
+            <div><dt data-zh="电邮">Email</dt><dd>support@caricarzautomall.com</dd></div>
+          </dl>
+          <img src="img/reception.jpg" alt="The CariCarz AutoMall reception desk">
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <main class="wrap" id="detail" hidden></main>
+</div>
+
+<footer class="wrap">
+  <div class="f-top">
+    <div class="f-brand">
+      <b>CariCarz AutoMall</b>
+      <p data-zh="二手车 · 寄售 · 马来西亚">Used cars &middot; Consignment &middot; Malaysia</p>
+      <address data-zh="CariCarz AutoMall<br>Pusat Perdagangan, Parking Level 3A Strand Mall,<br>Jalan PJU 5/22, PJU 5 Kota Damansara,<br>47810 Petaling Jaya, Selangor">CariCarz AutoMall<br>Pusat Perdagangan, Parking Level 3A Strand Mall,<br>Jalan PJU 5/22, PJU 5 Kota Damansara,<br>47810 Petaling Jaya, Selangor</address>
+    </div>
+    <nav class="f-links" aria-label="Contact">
+      <a href="https://caricarz.com" target="_blank" rel="noopener" data-zh="网站">Website</a>
+      <a href="https://wa.me/60162313191" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:support@caricarzautomall.com">support@caricarzautomall.com</a>
+    </nav>
+  </div>
+  <div class="f-bot">
+    <span>&copy; 2026 CariCarz AutoMall</span>
+    <span data-zh="加入 CariCarz AutoMall 团队">Join the CariCarz AutoMall team</span>
+  </div>
+</footer>
+
+<script>
+/* ---------- EDIT MONTHLY ----------
+   Change this list (title, openings, text). Cards, stats, role pages and the form dropdown all follow it.
+   In production, replace it with a fetch of a published Google Sheet CSV. */
+var ROLES = [
+  { id: "tele-sales", team: "Sales", title: "Tele & Car Sales Advisor", openings: 3, type: "Full-time",
+    tagline: "We supply the leads. You close the deal.", img: "img/tele.jpg",
+    title_zh: "电话及汽车销售顾问", type_zh: "全职", tagline_zh: "线索我们提供，成交靠你。",
+    does_zh: ["跟进我们平台、Facebook 和 WhatsApp 的线索并转化成交", "议价并成交", "介绍车辆并带客试驾", "电话销售与跟进"],
+    needs_zh: ["持有 D 类驾照", "有销售经验者优先，公司提供培训", "精通马来语和英语（会华语者更佳）", "精力充沛，需周末上班（轮休）"],
+    does: ["Convert leads from our platform, Facebook and WhatsApp", "Negotiate price and close deals", "Present vehicles and run test drives", "Tele sales and follow-up"],
+    needs: ["Class D licence", "Sales experience preferred, training provided", "BM and English (Mandarin a big plus)", "High energy, works weekends (rotational off-days)"] },
+  { id: "fleet-inspector", team: "Fleet", title: "Fleet Inspector", openings: 1, type: "Full-time",
+    tagline: "Keeping our fleet inspected, organized and showroom-ready.", img: "img/inspector.jpg",
+    title_zh: "车队检查员", type_zh: "全职", tagline_zh: "让我们的车辆保持检验合格、井然有序、随时可展示。",
+    does_zh: ["协调车辆调动与物流", "检查新到车辆是否有瑕疵", "办理 Puspakom 和 JPJ 过户", "车辆日常保养"],
+    needs_zh: ["持有 D 类驾照（有 GDL 驾照更佳）", "1 至 2 年车队、物流或租车运营经验", "做事有条理，能同时处理多项任务", "具备基本汽车机械知识，熟悉 JPJ/Puspakom 流程"],
+    does: ["Coordinate vehicle transfers and logistics", "Inspect incoming cars for defects", "Manage Puspakom and JPJ transfers", "Vehicle daily up-keep"],
+    needs: ["Class D licence (GDL licence a big plus)", "1 to 2 years in fleet, logistics or car rental operations", "Organized and able to multitask", "Basic car mechanics and JPJ/Puspakom know-how"] },
+  { id: "fleet-runner", team: "Fleet", title: "Fleet Runner", openings: 1, type: "Full-time",
+    tagline: "The bridge between our showroom, JPJ/Puspakom and customers.", img: "img/runner.jpg",
+    title_zh: "车队外勤员", type_zh: "全职", tagline_zh: "连接我们展厅、JPJ/Puspakom 与客户的桥梁。",
+    does_zh: ["驾车前往 Puspakom 验车", "办理 JPJ 路税、过户及文件", "将车辆送交客户", "展厅支援：加油与洗车"],
+    needs_zh: ["持有 D 类及 B2 驾照", "熟悉巴生谷道路及 Puspakom/JPJ", "通过 WhatsApp 汇报进度", "基本的马来语和英语"],
+    does: ["Drive cars to Puspakom for inspection", "JPJ road tax, transfers and documents", "Deliver vehicles to customers", "Showroom support: fuel and clean cars"],
+    needs: ["Class D and B2 licence", "Knows Klang Valley roads and Puspakom/JPJ", "Reports status via WhatsApp", "Basic BM and English"] },
+  { id: "inventory-admin", team: "Admin", title: "Inventory Admin", openings: 1, type: "Full-time",
+    tagline: "Keeper of our ~200-car showroom inventory.", img: "img/inventory.jpg",
+    title_zh: "库存行政", type_zh: "全职", tagline_zh: "我们约 200 辆车展厅库存的守护者。",
+    does_zh: ["钥匙与文件管理，每日盘点", "在各平台发布车辆广告", "数据录入", "修图"],
+    needs_zh: ["SPM / STPM / 商业或相关领域文凭", "基本 Excel 或 Google Sheets 技能（XLOOKUP）", "细心、有条理", "欢迎应届毕业生"],
+    does: ["Key and document control, daily audits", "Publish ad listings across platforms", "Data entry", "Edit photos"],
+    needs: ["SPM / STPM / Diploma in Business or a related field", "Basic Excel or Google Sheets (XLOOKUP)", "Detail-oriented and organized", "Fresh graduates welcome"] }
+];
+var LOCATION = "Kota Damansara, Selangor";
+var CARS = 200;
+var WORDS = ["test drive", "listing", "inspection", "delivery"];
+var WORDS_ZH = ["试驾", "上架", "验车", "交车"];
+var PERKS = [
+  { c: "var(--orange)", h: "Training provided", p: "Experience helps, but it is not everything. We train you on the cars and the process.", h_zh: "提供培训", p_zh: "经验是加分项，但不是唯一条件。我们会培训你认识车辆和工作流程。" },
+  { c: "var(--purple)", h: "A busy, real showroom", p: "About 200 cars, real customers and real deals. You see the result of your work every day.", h_zh: "真实忙碌的展厅", p_zh: "约 200 辆车，真实的客户和真实的成交。你每天都能看到自己的工作成果。" },
+  { c: "var(--teal)", h: "Fresh faces welcome", p: "Where the role allows, we welcome fresh graduates and people new to the industry.", h_zh: "欢迎新人", p_zh: "在岗位允许的情况下，我们欢迎应届毕业生和刚入行的朋友。" },
+  { c: "var(--magenta)", h: "Easy to reach", p: "Our showroom is at Strand Mall, Kota Damansara, with parking on site.", h_zh: "交通方便", p_zh: "展厅位于 Kota Damansara 的 Strand Mall，设有停车位。" }
+];
+/* Set to your Apps Script web app URL to send applications to your Google Sheet. */
+var APPLY_ENDPOINT = "https://script.google.com/a/macros/caricarz.com/s/AKfycbwHXnVUZMu_ZteNSRorLZ2xixPpNomVvO97A-trw95ogZk_ApdL6XkiwcnOJlNvuy9F/exec";   // Apps Script web app URL (ends in /exec)
+var ROLES_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFiXmXee4EF4vdwEc0VNTM3ZRGZEg_ijIuLrIVLVxk17Ff_J7KjsRAq4lF1SaetDs_Kl_QOEhhLTCb/pub?gid=1447355063&single=true&output=csv";    // Google Sheet "Roles" tab, File > Share > Publish to web > CSV
+var DEFAULT_IMG = "img/team.jpg";
+/* Meta Pixel hooks: safe no-ops until the pixel is installed on the live site. */
+function track(ev, data, id) { try { if (window.fbq) window.fbq("track", ev, data || {}, id ? { eventID: id } : undefined); } catch (e) {} }
+
+var $ = function (s, r) { return (r || document).querySelector(s); };
+var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var total = 0;
+var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+var current = "All", landingY = 0, view = "landing";
+
+/* ---------- language (EN / 中文) ---------- */
+var lang = "en"; try { lang = localStorage.getItem("cc-lang") === "zh" ? "zh" : "en"; } catch (e) {}
+var L = function (o, k) { return lang === "zh" && o[k + "_zh"] ? o[k + "_zh"] : o[k]; };
+var TEAMZH = { Sales: "销售", Fleet: "车队", Admin: "行政" };
+var TR = {
+  openings: ["openings", "个空缺"], roles: ["roles", "个职位"], cars: ["cars in the showroom", "辆展厅在售车"], loc: ["AutoMall, Kota Damansara", "间 AutoMall，位于 Kota Damansara"],
+  all: ["All", "全部"], view: ["View role &rarr;", "查看职位 &rarr;"], one: ["opening", "个空缺"], many: ["openings", "个空缺"], none: ["No open roles right now. Send us your resume below and we will keep it on file.", "目前暂无开放职位。欢迎在下方投递简历，我们会为你保留。"],
+  role: ["Role", "应聘职位"], choose: ["Choose a role", "请选择职位"], any: ["Open to any role", "任何职位都可以"], name: ["Full name", "姓名"], phone: ["Phone (WhatsApp)", "电话（WhatsApp）"], email: ["Email", "电邮"],
+  licq: ["Do you hold a Class D licence?", "你有 D 类驾照吗？"], l1: ["Class D", "D 类"], l2: ["Class D and B2", "D 类及 B2"], l3: ["Class D and GDL", "D 类及 GDL"], l4: ["Not yet", "还没有"],
+  cv: ["Resume link", "简历链接"], opt: ["(optional)", "（选填）"], cvph: ["Google Drive or LinkedIn link", "Google Drive 或 LinkedIn 链接"], cvs: ["Or email it to support@caricarzautomall.com.", "或直接电邮至 support@caricarzautomall.com。"],
+  consent: ["I agree CariCarz AutoMall may collect and use these details to contact me about hiring (PDPA 2010).", "我同意 CariCarz AutoMall 依据《2010 年个人资料保护法令》（PDPA）收集并使用以上资料，仅用于招聘联系。"],
+  submit: ["Submit application", "提交申请"], note: ["We use your details only to contact you about this application.", "我们仅会用你的资料联系你处理此申请。"],
+  prev: ["Preview only: the form is not connected to your Google Sheet yet, so nothing was sent.", "仅为预览：表格尚未连接 Google Sheet，没有发送任何资料。"],
+  thanks: ["Thanks, {n}. We have your application and will reach out by WhatsApp or email.", "谢谢你，{n}。我们已收到你的申请，会通过 WhatsApp 或电邮联系你。"],
+  fail: ["Could not send your application. Please WhatsApp us at +60 16-231 3191.", "无法发送申请。请 WhatsApp 联系我们：+60 16-231 3191。"],
+  back: ["&larr; All roles", "&larr; 全部职位"], applyrole: ["Apply for this role &darr;", "申请此职位 &darr;"], f_type: ["Type", "类型"], f_team: ["Team", "团队"], f_loc: ["Location", "地点"],
+  does: ["What you'll do", "工作内容"], needs: ["What you need", "任职要求"], aph: ["Apply for this role", "申请此职位"],   applynow: ["Apply now", "立即申请"], next: ["Next: ", "下一个："]
+};
+var t = function (k) { return TR[k][lang === "zh" ? 1 : 0]; };
+
+/* ---------- stats ---------- */
+function renderStats() {
+  $("#stats").innerHTML = [[CARS, "~", t("cars")], [1, "", t("loc")]]
+    .map(function (s) { return '<div class="stat"><b data-to="' + s[0] + '" data-pre="' + s[1] + '">' + s[1] + s[0] + '</b><span>' + esc(s[2]) + '</span></div>'; }).join("");
+}
+
+/* ---------- tabs and cards ---------- */
+var teams = [];
+function getTeams() { return ["All"].concat(ROLES.map(function (r) { return r.team; }).filter(function (x, i, a) { return a.indexOf(x) === i; })); }
+var teamName = function (x) { return x === "All" ? t("all") : (lang === "zh" && TEAMZH[x]) || x; };
+function renderTabs() {
+  teams = getTeams(); $("#tabs").innerHTML = teams.map(function (x) {
+    var n = x === "All" ? ROLES.length : ROLES.filter(function (r) { return r.team === x; }).length;
+    return '<button class="tab" type="button" data-team="' + esc(x) + '" aria-pressed="' + (x === current) + '">' + esc(teamName(x)) + '</button>';
+  }).join("");
+}
+function renderGrid() {
+  var list = ROLES.filter(function (r) { return current === "All" || r.team === current; });
+  $("#grid").innerHTML = list.length ? list.map(function (r, i) {
+    return '<a class="role" data-r data-id="' + r.id + '" href="#role-' + r.id + '" data-open="' + r.id + '" style="transition-delay:' + (i * 70) + 'ms,' + (i * 70) + 'ms,0s,0s">' +
+      '<div class="ph"><img src="' + r.img + '" alt="" loading="lazy"><i>' + pad(ROLES.indexOf(r) + 1) + '</i></div>' +
+      '<div class="body"><div class="cat">' + esc(teamName(r.team)) + '</div><h3>' + esc(L(r, "title")) + '</h3><p class="tag">' + esc(L(r, "tagline")) + '</p>' +
+      '<div class="foot"><span>' + esc(L(r, "type")) + '</span><em>' + t("view") + '</em></div></div></a>';
+  }).join("") : '<p class="empty">' + t("none") + '</p>';
+  reveal($("#grid"));
+}
+function renderPerks() {
+  $("#perks").innerHTML = PERKS.map(function (p, i) {
+    return '<div class="perk" data-r style="--c:' + p.c + ';transition-delay:' + (i * 80) + 'ms,' + (i * 80) + 'ms"><h3>' + esc(L(p, "h")) + '</h3><p>' + esc(L(p, "p")) + '</p></div>';
+  }).join("");
+}
+
+/* ---------- form ---------- */
+function formHTML(p, roleId) {
+  return '<form id="' + p + '-form" novalidate data-r>' +
+    '<div class="f"><label for="' + p + '-role">' + t("role") + '</label><select id="' + p + '-role" name="role" required>' +
+      '<option value="" disabled' + (roleId ? '' : ' selected') + '>' + t("choose") + '</option>' +
+      ROLES.map(function (r) { return '<option value="' + r.id + '"' + (r.id === roleId ? ' selected' : '') + '>' + esc(L(r, "title")) + '</option>'; }).join("") +
+      '<option value="any">' + t("any") + '</option></select></div>' +
+    '<div class="two"><div class="f"><label for="' + p + '-name">' + t("name") + '</label><input id="' + p + '-name" name="name" autocomplete="name" required></div>' +
+    '<div class="f"><label for="' + p + '-phone">' + t("phone") + '</label><input id="' + p + '-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="012-345 6789" required></div></div>' +
+    '<div class="f"><label for="' + p + '-email">' + t("email") + '</label><input id="' + p + '-email" name="email" type="email" autocomplete="email" required></div>' +
+    '<fieldset class="f"><legend>' + t("licq") + '</legend><div class="radios">' +
+      '<label><input type="radio" name="licence" value="Class D" required> ' + t("l1") + '</label>' +
+      '<label><input type="radio" name="licence" value="Class D + B2"> ' + t("l2") + '</label>' +
+      '<label><input type="radio" name="licence" value="Class D + GDL"> ' + t("l3") + '</label>' +
+      '<label><input type="radio" name="licence" value="None"> ' + t("l4") + '</label></div></fieldset>' +
+    '<div class="f"><label for="' + p + '-cv">' + t("cv") + ' <span class="note">' + t("opt") + '</span></label><input id="' + p + '-cv" name="cv" type="url" placeholder="' + t("cvph") + '"><small>' + t("cvs") + '</small></div>' +
+    '<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><label class="consent"><input type="checkbox" name="consent" required> ' + t("consent") + '</label>' +
+    '<button class="btn" type="submit">' + t("submit") + '</button><div class="status" hidden role="status"></div>' +
+    '<p class="note">' + t("note") + '</p></form>';
+}
+document.addEventListener("submit", function (e) {
+  var f = e.target; if (!f.matches || !f.matches("form")) return;
+  e.preventDefault();
+  var st = $(".status", f), btn = $("button[type=submit]", f);
+  var show = function (m, err) { st.hidden = false; st.className = "status" + (err ? " err" : ""); st.textContent = m; };
+  if (!f.checkValidity()) { f.reportValidity(); return; }
+  if (f.website && f.website.value) { return; }
+  var role = ROLES.filter(function (r) { return r.id === f.role.value; })[0];
+  var data = { submitted_at: new Date().toISOString(), role: role ? role.title : "Open to any role", name: f.name.value.trim(), phone: f.phone.value.trim(), email: f.email.value.trim(), licence: f.licence.value || "", cv: f.cv.value.trim(), consent: true, language: lang, event_id: "lead-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8) };
+  if (!APPLY_ENDPOINT) { show(t("prev")); return; }
+  btn.disabled = true;
+  fetch(APPLY_ENDPOINT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(data) })
+    .then(function () { track("Lead", { content_name: data.role }, data.event_id); f.reset(); show(t("thanks").replace("{n}", data.name)); })
+    .catch(function () { show(t("fail"), true); })
+    .then(function () { btn.disabled = false; });
+});
+
+/* ---------- detail view ---------- */
+function detailHTML(r) {
+  var i = ROLES.indexOf(r), next = ROLES[(i + 1) % ROLES.length];
+  return '<article class="detail" data-id="' + r.id + '">' +
+    '<button class="back" type="button" data-back>' + t("back") + '</button>' +
+    '<div class="d-head" data-r><div><div class="eyebrow">' + esc(teamName(r.team)) + '</div><h1 style="margin-top:12px">' + esc(L(r, "title")) + '</h1><p>' + esc(L(r, "tagline")) + '</p></div>' +
+      '<a class="btn" data-nav="d-apply">' + t("applyrole") + '</a></div>' +
+    '<div class="facts" data-r>' +
+      '<div class="fact"><span>' + t("f_type") + '</span><b>' + esc(L(r, "type")) + '</b></div>' +
+      '<div class="fact"><span>' + t("f_team") + '</span><b>' + esc(teamName(r.team)) + '</b></div><div class="fact"><span>' + t("f_loc") + '</span><b>' + esc(LOCATION.split(",")[0]) + '</b></div></div>' +
+    '<div class="d-cols"><div>' +
+      '<section class="block" data-r><h2><b>01</b> ' + t("does") + '</h2><ul>' + L(r, "does").map(function (x) { return '<li>' + esc(x) + '</li>'; }).join("") + '</ul></section>' +
+      '<section class="block" data-r><h2><b>02</b> ' + t("needs") + '</h2><ul>' + L(r, "needs").map(function (x) { return '<li>' + esc(x) + '</li>'; }).join("") + '</ul></section>' +
+    '</div><div class="d-photo" data-r><img src="' + r.img + '" alt=""></div></div>' +
+    '<section id="d-apply"><hr class="rule"><div class="eyebrow"><b style="color:var(--magenta)">03</b> ' + t("aph") + '</div>' +
+      '<div style="height:24px"></div>' +
+      '<div style="max-width:640px">' + formHTML("d", r.id) + '</div></section>' +
+    '<div class="sticky-apply" id="sticky-apply"><a class="btn" data-nav="d-apply">' + t("applynow") + ' &middot; ' + esc(L(r, "title")) + '</a></div>' +
+    '<div class="more"><a data-back>' + t("back") + '</a><a data-open="' + next.id + '">' + t("next") + esc(L(next, "title")) + ' &rarr;</a></div></article>';
+}
+
+
+/* ---------- roles from Google Sheet ---------- */
+function parseCSV(text) {
+  var rows = [], row = [], f = "", q = false, i, c;
+  for (i = 0; i < text.length; i++) {
+    c = text[i];
+    if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+    else if (c === '"') q = true;
+    else if (c === ",") { row.push(f); f = ""; }
+    else if (c === "\n") { row.push(f); rows.push(row); row = []; f = ""; }
+    else if (c !== "\r") f += c;
+  }
+  if (f !== "" || row.length) { row.push(f); rows.push(row); }
+  return rows;
+}
+function slug(x) { return String(x).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+function rolesFromCSV(text) {
+  var rows = parseCSV(text.replace(/^\uFEFF/, "")); if (rows.length < 2) return [];
+  var h = rows[0].map(function (x) { return x.trim().toLowerCase(); });
+  var list = function (v) { return (v || "").split("|").map(function (x) { return x.trim(); }).filter(Boolean); };
+  var out = [];
+  rows.slice(1).forEach(function (r) {
+    var o = {}; h.forEach(function (k, i) { o[k] = (r[i] || "").trim(); });
+    if (!o.title || /^(false|no|0)$/i.test(o.active || "true")) return;
+    var role = { id: o.id || slug(o.title), order: +o.order || 999, team: o.team || "Other", title: o.title, type: o.type || "Full-time", tagline: o.tagline || "",
+      img: o.image || DEFAULT_IMG, does: list(o.does), needs: list(o.needs), openings: 1 };
+    ["team", "title", "type", "tagline"].forEach(function (k) { if (o[k + "_zh"]) role[k + "_zh"] = o[k + "_zh"]; });
+    if (o.does_zh) role.does_zh = list(o.does_zh); if (o.needs_zh) role.needs_zh = list(o.needs_zh);
+    out.push(role);
+  });
+  return out.sort(function (a, b) { return a.order - b.order; });
+}
+function useRoles(list) {
+  ROLES = list; total = list.length; current = "All";
+  list.forEach(function (r) { if (r.team_zh) TEAMZH[r.team] = r.team_zh; });
+  applyLang();
+}
+function loadRoles(done) {
+  if (!ROLES_CSV_URL) { total = ROLES.length; done(); return; }
+  $("#grid").innerHTML = '<p class="empty">...</p>';
+  fetch(ROLES_CSV_URL + (ROLES_CSV_URL.indexOf("?") < 0 ? "?" : "&") + "t=" + Date.now())
+    .then(function (r) { if (!r.ok) throw 0; return r.text(); })
+    .then(function (txt) { ROLES = rolesFromCSV(txt); total = ROLES.length; done(); })
+    .catch(function () { ROLES = []; total = 0; done(true); });
+}
+
+/* apply language to everything on the page */
+function applyLang(rerenderOnly) {
+  document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+  [].slice.call(document.querySelectorAll("[data-zh]")).forEach(function (el) {
+    if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
+    el.innerHTML = lang === "zh" ? el.dataset.zh : el.dataset.en;
+  });
+  [].slice.call(document.querySelectorAll("[data-lang]")).forEach(function (b) { var on = b.dataset.lang === lang; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+  var w = $("#word"); if (w) w.textContent = (lang === "zh" ? WORDS_ZH : WORDS)[wi % WORDS.length];
+  renderStats(); renderTabs(); renderGrid(); renderPerks(); $("#form-landing").innerHTML = formHTML("l", "");
+  reveal($("#landing"));
+  if (view === "detail") { var a = $("#detail article"), r = a && ROLES.filter(function (x) { return x.id === a.dataset.id; })[0]; if (r) { $("#detail").innerHTML = detailHTML(r); reveal($("#detail")); watchApply(); } }
+}
+function setLang(l) { lang = l; try { localStorage.setItem("cc-lang", l); } catch (e) {} applyLang(); }
+
+/* ---------- motion helpers ---------- */
+var io = ("IntersectionObserver" in window) ? new IntersectionObserver(function (es) {
+  es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.remove("pre"); io.unobserve(en.target); countUp(en.target); } });
+}, { threshold: 0.12 }) : null;
+function reveal(root) {
+  if (!io || reduce) return;
+  var els = root.matches && root.matches("[data-r]") ? [root] : [];
+  els = els.concat([].slice.call(root.querySelectorAll("[data-r]")));
+  els.forEach(function (el) {
+    if (el.getBoundingClientRect().top > window.innerHeight * 0.92) { el.classList.add("pre"); io.observe(el); }
+    else countUp(el);
+  });
+}
+function countUp(el) {
+  if (reduce) return;
+  [].slice.call(el.querySelectorAll("[data-to]")).forEach(function (n) {
+    if (n.dataset.done) return; n.dataset.done = "1";
+    var to = +n.dataset.to, pre = n.dataset.pre || "", t0 = null;
+    (function step(t) { if (!t0) t0 = t; var k = Math.min((t - t0) / 900, 1); n.textContent = pre + Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); })(performance.now());
+  });
+}
+/* rotating word */
+var wi = 0;
+setInterval(function () {
+  var w = $("#word"); if (!w || reduce || view !== "landing") return;
+  w.classList.add("out");
+  setTimeout(function () { wi = (wi + 1) % WORDS.length; w.textContent = (lang === "zh" ? WORDS_ZH : WORDS)[wi]; w.classList.remove("out"); }, 350);
+}, 2600);
+
+/* ---------- views ---------- */
+function swap(fn) {
+  var st = $("#stage");
+  if (reduce) { fn(); return; }
+  st.classList.add("out");
+  setTimeout(function () { fn(); requestAnimationFrame(function () { st.classList.remove("out"); }); }, 250);
+}
+function showRole(id, push) {
+  var r = ROLES.filter(function (x) { return x.id === id; })[0]; if (!r) return;
+  if (view === "landing") landingY = window.scrollY;
+  swap(function () {
+    $("#landing").hidden = true; var d = $("#detail"); d.hidden = false; d.innerHTML = detailHTML(r);
+    view = "detail"; window.scrollTo(0, 0); reveal(d); watchApply(); track("ViewContent", { content_name: r.title });
+  });
+  if (push) { try { location.hash = "role-" + id; } catch (e) {} }
+}
+function watchApply() {
+  var bar = $("#sticky-apply"), tgt = $("#d-apply"); if (!bar || !tgt || !("IntersectionObserver" in window)) return;
+  new IntersectionObserver(function (es) { bar.classList.toggle("hide", es[0].isIntersecting); }, { threshold: 0.15 }).observe(tgt);
+}
+function showLanding(y, push) {
+  swap(function () {
+    $("#detail").hidden = true; $("#detail").innerHTML = ""; $("#landing").hidden = false; view = "landing"; window.scrollTo(0, y || 0);
+  });
+  if (push) { try { history.replaceState(null, "", location.pathname + location.search); location.hash = ""; } catch (e) {} }
+}
+function goTo(id) {
+  var run = function () { var el = document.getElementById(id === "top" ? "top" : id); if (el) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); };
+  if (id === "d-apply") { run(); return; }
+  if (view === "detail") { swap(function () { $("#detail").hidden = true; $("#landing").hidden = false; view = "landing"; run(); }); try { location.hash = ""; } catch (e) {} }
+  else run();
+}
+function route() {
+  var h = location.hash.replace("#", "");
+  if (h.indexOf("role-") === 0) { if (view !== "detail" || !$("#detail article") || $("#detail article").dataset.id !== h.slice(5)) showRole(h.slice(5), false); }
+  else if (view === "detail") showLanding(landingY, false);
+}
+window.addEventListener("hashchange", route);
+
+document.addEventListener("click", function (e) {
+  var lb = e.target.closest("[data-lang]"); if (lb) { setLang(lb.dataset.lang); return; }
+  var t = e.target;
+  var tab = t.closest(".tab"); if (tab) { current = tab.dataset.team; renderTabs(); renderGrid(); return; }
+  var open = t.closest("[data-open]"); if (open) { e.preventDefault(); showRole(open.dataset.open, true); return; }
+  var back = t.closest("[data-back]"); if (back) { e.preventDefault(); showLanding(landingY, true); return; }
+  var nav = t.closest("[data-nav]"); if (nav) { e.preventDefault(); goTo(nav.dataset.nav); }
+});
+
+loadRoles(function () { applyLang(); route(); });
+</script>
